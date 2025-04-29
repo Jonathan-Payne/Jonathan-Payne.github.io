@@ -2,16 +2,51 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* todo change font */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-nav {
+.header {
+    text-align: center;
     position: fixed;
-    ul li {
-        display: inline;
-    }
+    top: 0;
+    background-color: green;
+    padding: 30px 0;
+    width: 100%
 }
 
-h1 {
-    position: relative;
-    top: 50px;
+.header li {
+    display: inline;
+    padding: 30px;
+}
+
+.header a {
+    color: white;
+}
+
+.spacer {
+    height: 120px;
+    position: static;
+}
+
+.project img {
+    display: block;
+    margin: 20px auto;
+    width: 50%
+}
+
+.project {
+    text-align: center;
+    margin: 100px 50px;
+}
+
+.footer {
+    background-color: green;
+    text-align: center;
+    padding: 30px;
+}
+
+.footer span {
+    color: white;
+    padding: 20px;
 }
