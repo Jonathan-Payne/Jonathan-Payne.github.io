@@ -1,3 +1,9 @@
 img {
     width: 100%;
 }
+
+p {
+    color: red;
+    background: lime;
+    font-size: 50px;
+}
