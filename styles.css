@@ -1,52 +1,13 @@
-* {
+@font-face {
+    font-family: 'Garet-Book';
+    src: url('/fonts/Garet-Book.otf');
+}
+
+html {
+    font-family: 'Garet-Book';
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    /* todo change font */
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-.header {
-    text-align: center;
-    position: fixed;
-    top: 0;
-    background-color: green;
-    padding: 30px 0;
-    width: 100%
-}
-
-.header li {
-    display: inline;
-    padding: 30px;
-}
-
-.header a {
-    color: white;
-}
-
-.spacer {
-    height: 120px;
-    position: static;
-}
-
-.project img {
-    display: block;
-    margin: 20px auto;
-    width: 50%
-}
-
-.project {
-    text-align: center;
-    margin: 100px 50px;
-}
-
-.footer {
-    background-color: green;
-    text-align: center;
-    padding: 30px;
-}
-
-.footer span {
-    color: white;
-    padding: 20px;
+nav {
+    background-color: red;
 }
