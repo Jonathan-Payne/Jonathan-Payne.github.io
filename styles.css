@@ -30,22 +30,72 @@ html {
 }
 
 nav {
-    border: 1px solid black;
     text-transform: uppercase;
+    background-color: white;
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
-
+    padding: 10px;
 
     ul, li {
         display: inline;
     }
 
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+
     ul {
-        right: 10px;
-        top: 0;
+        float: right;
+        margin-right: 20px;
+    }
+
+    z-index: 1000;
+}
+
+.welcome {
+    position: relative;
+
+    img {
+        width: 100%;
+        z-index: 0;
+    }
+
+    .name {
         position: absolute;
+        color: white;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+        font-size: 15vw;
+        letter-spacing: 20px;
+    }
+
+    .j{
+        top: 100px;
+    }
+
+    .p {
+        top: 400px;
+    }
+
+    .intro {
+        position: absolute;
+        color: white;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: 700px;
+        bottom: 100px;
     }
 }
 
