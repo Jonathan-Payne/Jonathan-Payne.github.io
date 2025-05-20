@@ -84,12 +84,12 @@ nav {
         letter-spacing: 20px;
     }
 
-    .j{
-        top: 100px;
+    #j{
+        top: 4vw;
     }
 
-    .p {
-        top: 400px;
+    #p {
+        top: 20vw;
     }
 
     .intro {
@@ -101,10 +101,6 @@ nav {
         margin-inline: auto;
         width: 700px;
         bottom: 100px;
+        text-align: left;
     }
-}
-
-h1 {
-    position: static;
-    padding-top: 100px;
 }
