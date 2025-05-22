@@ -36,7 +36,8 @@ img {
 
 nav {
     text-transform: uppercase;
-    background-color: #ADC7DC;
+    background-color: white;
+    box-shadow: 0 0 0.5em grey;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -47,9 +48,13 @@ nav {
         display: inline;
     }
 
+    .navtext {
+        color: black;
+        font-size: 1.5em;
+    }
+
     a {
         text-decoration: none;
-        color: black;
     }
     
     a:hover {
@@ -80,8 +85,8 @@ nav {
         right: 0;
         margin-inline: auto;
         width: fit-content;
-        font-size: 15vw;
-        letter-spacing: 20px;
+        font-size: 12vw;
+        letter-spacing: 0.15em;
     }
 
     #j{
@@ -99,7 +104,7 @@ nav {
         left: 0;
         right: 0;
         margin-inline: auto;
-        width: 700px;
+        width: 30vw;
         bottom: 100px;
         text-align: left;
     }
@@ -115,7 +120,19 @@ nav {
         float: right;
         margin-right: 5vw;
         margin-bottom: 5vw;
-        border: 1vw solid black;
+        box-shadow: 0 0 1em grey;
+    }
+
+    .otherside img {
+        float: left;
+        margin-right: 0;
+        margin-left: 5vw;
+    }
+
+    .otherside .text {
+        float: right;
+        margin-right: 5vw;
+        margin-left: 0;
     }
 
     .text {
@@ -146,4 +163,26 @@ nav {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+footer {
+    clear: both;
+    background-color: black;
+
+    .footertext {
+        color: white;
+        font-size: 1.5em;
+    }
+
+    #bottom-name {
+        float: left;
+        margin-left: 5vw;
+        
+    }
+
+    #email {
+        float: right;
+    }
+
+    height: 7vw;
 }
