@@ -42,7 +42,7 @@ nav {
     top: 0px;
     left: 0px;
     width: 100%;
-    padding: 10px;
+    padding: 1vw;
 
     ul, li {
         display: inline;
@@ -50,7 +50,7 @@ nav {
 
     .navtext {
         color: black;
-        font-size: 1.5em;
+        font-size: 1.25vw;
     }
 
     a {
@@ -63,7 +63,7 @@ nav {
 
     ul {
         float: right;
-        margin-right: 20px;
+        margin-right: 2vw;
     }
 
     z-index: 1000;
@@ -90,11 +90,11 @@ nav {
     }
 
     #j{
-        top: 4vw;
+        top: 7vw;
     }
 
     #p {
-        top: 20vw;
+        top: 23vw;
     }
 
     .intro {
@@ -106,7 +106,7 @@ nav {
         margin-inline: auto;
         width: 30vw;
         bottom: 100px;
-        text-align: left;
+        font-size: max(12px, 1.25vw);
     }
 }
 
@@ -172,17 +172,11 @@ footer {
     .footertext {
         color: white;
         font-size: 1.5em;
-    }
-
-    #bottom-name {
-        float: left;
-        margin-left: 5vw;
-        
+        display: inline-block;
+        margin: 2vw 5vw;
     }
 
     #email {
         float: right;
     }
-
-    height: 7vw;
 }
