@@ -29,11 +29,6 @@ html {
     box-sizing: border-box;
 }
 
-img {
-    /* usually overriden */
-    width: 50%;
-}
-
 nav {
     text-transform: uppercase;
     background-color: white;
