@@ -1,53 +1,182 @@
-* {
+@font-face {
+    font-family: 'Garet-Book';
+    src: url('/fonts/Garet-Book.otf');
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html {
+    font-family: 'Garet-Book';
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    /* todo change font */
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-.header {
-    text-align: center;
+img {
+    /* usually overriden */
+    width: 50%;
+}
+
+nav {
+    text-transform: uppercase;
+    background-color: white;
+    box-shadow: 0 0 0.5em grey;
     position: fixed;
-    top: 0;
-    background-color: green;
-    padding: 30px 0;
-    width: 100%
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 1vw;
+
+    ul, li {
+        display: inline;
+    }
+
+    .navtext {
+        color: black;
+        font-size: 1.25vw;
+    }
+
+    a {
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+
+    ul {
+        float: right;
+        margin-right: 2vw;
+    }
+
+    z-index: 1000;
 }
 
-.header li {
-    display: inline;
-    padding: 30px;
+.welcome {
+    position: relative;
+
+    img {
+        width: 100%;
+        z-index: 0;
+    }
+
+    .name {
+        position: absolute;
+        color: white;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+        font-size: 12vw;
+        letter-spacing: 0.15em;
+    }
+
+    #j{
+        top: 7vw;
+    }
+
+    #p {
+        top: 23vw;
+    }
+
+    .intro {
+        position: absolute;
+        color: white;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: 30vw;
+        bottom: 100px;
+        font-size: max(12px, 1.25vw);
+    }
 }
 
-.header a {
-    color: white;
-    display: inline;
+.showcase {
+    img, .text {
+        display: inline-block;
+        max-width: 40%
+    }
+
+    img {
+        float: right;
+        margin-right: 5vw;
+        margin-bottom: 5vw;
+        box-shadow: 0 0 1em grey;
+    }
+
+    .otherside img {
+        float: left;
+        margin-right: 0;
+        margin-left: 5vw;
+    }
+
+    .otherside .text {
+        float: right;
+        margin-right: 5vw;
+        margin-left: 0;
+    }
+
+    .text {
+        float: left;
+        margin-left: 5vw;
+        margin-bottom: 5vw;
+
+        h2 {
+            font-size: 4vw;
+            margin-bottom: 2vw;
+        }
+
+        p {
+            font-size: max(12px, 1.25vw);
+        }
+    }
+
+    .part {
+        clear: both;
+        margin-top: 5vw;
+    }
+
+    #break {
+        clear: both;
+        height: 2px;
+        width: 70vw;
+        background-color: black;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
-.spacer {
-    height: 120px;
-    position: static;
-}
+footer {
+    clear: both;
+    background-color: black;
 
-.project img {
-    display: block;
-    margin: 20px auto;
-    width: 50%
-}
+    .footertext {
+        color: white;
+        font-size: 1.5em;
+        display: inline-block;
+        margin: 2vw 5vw;
+    }
 
-.project {
-    text-align: center;
-    margin: 100px 50px;
-}
-
-.footer {
-    background-color: green;
-    text-align: center;
-    padding: 30px;
-}
-
-.footer span {
-    color: white;
-    padding: 20px;
+    #email {
+        float: right;
+    }
 }
