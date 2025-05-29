@@ -96,3 +96,16 @@ footer {
         float: right;
     }
 }
+
+em {
+    font-style: italic;
+}
+
+.normallink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.normallink:hover {
+    text-decoration: underline;
+}
