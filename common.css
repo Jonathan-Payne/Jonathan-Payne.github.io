@@ -59,7 +59,7 @@ nav {
 
 .ht {
     color: black;
-    text-decoration: underline rgba(0, 0, 0, 0);
+    text-decoration: none;
     position: relative;
     display: inline-block;
 }
