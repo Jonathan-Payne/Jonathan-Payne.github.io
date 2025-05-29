@@ -1,4 +1,33 @@
-#credit {
-    margin-top: 0.25vw;
+.caption {
+    margin-top: 0.35vw !important;
     font-size: 0.8em;
+}
+
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    font-size: 3vw;
+    margin-bottom: 2vw;
+}
+
+#puzzle {
+    .official, .generated {
+        display: inline-block;
+        width: 35vw;
+        height: fit-content;
+        margin-left: 10vw;
+    }
+
+    img {
+        height: 35vw;
+        width: 100%
+    }
+
+    .caption {
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        display: block;
+    }
 }

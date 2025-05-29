@@ -24,9 +24,26 @@
         <div id="divider1"></div>
         <section class="content">
             <div class="piece">
+                <h2>DoG image stylization</h2>
                 <img src="images/autin photo copy.webp">
-                <p id="credit">Photo by Austin Chu</p>
-                <p>Image stylization using the <a class="normallink" href="https://en.wikipedia.org/wiki/Difference_of_Gaussians">Difference of Gaussians</a> (DoG) algorithm. DoG can be used for a variety of image stylization techniques, and here is it set up for edge detection as seen on the left. I implemented the algorithm using Java.</p>
+                <p class="caption">Original Photo by Austin Chu. Right: original image. Left: image after DoG filter.</p>
+                <p>Image stylization using the <a class="normallink" href="https://en.wikipedia.org/wiki/Difference_of_Gaussians">Difference of Gaussians</a> (DoG) algorithm. DoG can be used for a variety of image stylization techniques, and here is it set up for edge detection. I implemented the algorithm using Java.</p>
+            </div>
+            <div class="piece" id="puzzle">
+                <h2>Two Not Touch puzzle generator</h2>
+                <div class="official">
+                    <img src="images/two not touch official.jpg" id="official">
+                    <p class="caption official">Official 10x10 Two Not Touch puzzle</p>
+                </div>
+                <div class="generated">
+                    <img src="images/two not touch generated.webp" id="generated">
+                    <p class="caption generated">Randomly generated 10x10 puzzle</p>
+                </div>
+                <p>My favorite puzzle game is <a class="normallink" href="https://krazydad.com/twonottouch/">Two Not Touch</a> by krazydad, also called Star Battle Go. I downloaded an app with puzzles on my phone, but eventually ran out. Instead of buying more puzzles, I decided I would try to build a program to generate them automatically. It was a lot of work, but I eventually succeeded in making an algorithm that could generate any square two not touch board. You can see the command line output displaying a generated 10 by 10 board on the right. I hope to someday expand this into an app with a real GUI, and maybe even build an automatic solver.</p>
+            </div>
+            <div class="piece">
+                <h2>8-bit breadboard computer</h2>
+                
             </div>
         </section>
         <footer>
