@@ -46,14 +46,7 @@ nav {
     .navtext {
         color: black;
         font-size: 1.25vw;
-    }
-
-    a {
-        text-decoration: none;
-    }
-    
-    a:hover {
-        text-decoration: underline;
+        margin-right: 0.25em;
     }
 
     ul {
@@ -62,6 +55,30 @@ nav {
     }
 
     z-index: 1000;
+}
+
+.ht {
+    color: black;
+    text-decoration: underline rgba(0, 0, 0, 0);
+    position: relative;
+    display: inline-block;
+}
+
+.ht::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    transform: scaleX(0);
+    height: 0.05em;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transition: transform 0.25s ease-out;
+    transform-origin: bottom center;
+}
+
+.ht:hover::after {
+    transform: scaleX(1);
 }
 
 footer {
