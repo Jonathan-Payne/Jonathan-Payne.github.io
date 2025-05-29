@@ -103,9 +103,4 @@ em {
 
 .normallink {
     color: inherit;
-    text-decoration: none;
-}
-
-.normallink:hover {
-    text-decoration: underline;
 }
