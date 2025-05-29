@@ -32,8 +32,9 @@
         margin-left: auto;
         margin-right: auto;
         display: block;
-        height: 80vh;
+        max-height: 80vh;
         box-shadow: 0 0 10px gray;
+        max-width: 90vw;
     }
 
     p {
