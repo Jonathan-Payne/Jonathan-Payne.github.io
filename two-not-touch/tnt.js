@@ -11,6 +11,12 @@ function sfc32(a, b, c, d) {
     return (t >>> 0) / 4294967296;
   }
 }
+const seedgen = () => (Math.random()*2**32)>>>0;
+const getRand = sfc32(seedgen(), seedgen(), seedgen(), seedgen());
+
+
+const nextInt = (bound) => Math.floor(getRand() * bound);
+
 
 
 //show slider val in text
@@ -21,32 +27,32 @@ slider.oninput = function() {
     sliderval.innerHTML = this.value;
 }
 
+
+
+
+
+
 //generate button
 document.getElementById('generate').onclick = () => {
-    generate();
+    let board = {
+        grid: [],
+        shapes: [],
+        len: slider.value,
+        seed: -1
+    };
+    generate(board);
 }
 
 
-function generate() {
+
+function generate(board) {
     const boardContainer = document.getElementById('boardContainer');
     //erase any previous generations
     boardContainer.replaceChildren();
 
 
 
-    //PRNG
-    const seedgen = () => (Math.random()*2**32)>>>0;
-    const getRand = sfc32(seedgen(), seedgen(), seedgen(), seedgen());
-
-
-
     //init board array
-    let board = {
-        grid: [],
-        shapes: [],
-        len: slider.value,
-        seed: -1
-    }
     for (let i = 0; i < board.len; i++) {
         board.grid[i] = [];
         for (let j = 0; j < board.len; j++) {
@@ -56,7 +62,7 @@ function generate() {
                 shapeNum: -1,
                 row: i,
                 col: j
-            }
+            };
         }
     }
 
@@ -69,10 +75,17 @@ function generate() {
         for (let j = 0; j < board.len; j++) {
             let cell = document.createElement('div');
             cell.className = 'cell';
-            cell.style.width = '10px';
-            cell.style.height = '10px';
-            cell.style.backgroundColor = `rgb(${i * (255 / board.len)}, ${j * (255 / board.len)}, 0)`;
+            // cell.style.width = '10px';
+            // cell.style.height = '10px';
+            // cell.style.backgroundColor = `rgb(${i * (255 / board.len)}, ${j * (255 / board.len)}, 0)`;
+            cell.style.border = '1px solid gray';
 
+            
+            let star = document.createElement('img');
+            star.src = "assets/star.svg"
+            star.style.scale = 0.75;
+            cell.append(star);
+            
             boardContainer.append(cell);
         }
     }

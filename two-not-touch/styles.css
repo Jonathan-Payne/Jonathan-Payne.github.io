@@ -9,5 +9,6 @@
 #boardContainer {
     display: grid;
     grid-auto-rows: 20px;
-    
+    border: 2px solid black;
+    width: fit-content;
 }
