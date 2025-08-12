@@ -1,0 +1,13 @@
+.label {
+    display: inline;
+}
+
+#generate {
+    display: block;
+}
+
+#boardContainer {
+    display: grid;
+    grid-auto-rows: 20px;
+    
+}
