@@ -194,15 +194,15 @@ class Board {
         //set appropriate number of columns
         boardContainer.style.gridTemplateColumns = `repeat(${this.len}, min(${50 / this.len}vw, ${50 / this.len}vh)`;
         boardContainer.style.gridAutoRows = `min(${50 / this.len}vw, ${50 / this.len}vh)`;
-
-
+        
         //add cells as HTML elements
         for (let i = 0; i < this.len; i++) {
             for (let j = 0; j < this.len; j++) {
                 let hCell = document.createElement('div');
                 let bCell = this.grid[i][j];
-                hCell.style.border = '1px solid gray';
+                hCell.className = 'cell';
                 
+                //star or cross inside cell
                 let stateDisplay = document.createElement('img');
                 if (bCell.isStar) {    
                     stateDisplay.src = "assets/star.svg"
@@ -211,26 +211,27 @@ class Board {
                     stateDisplay.src = "assets/cross.svg"
                     stateDisplay.style.scale = 0.35;
                 }
-
                 hCell.append(stateDisplay);
 
+                //border styling
+                hCell.style.border = '1px solid gray';
                 let neighbors = bCell.get4Neighbors();
                 if (neighbors[0] != null)
                     if (neighbors[0].shapeNum != bCell.shapeNum)
                         hCell.style.borderTop = '2px solid black';
-
                 if (neighbors[1] != null)
                     if (neighbors[1].shapeNum != bCell.shapeNum)
                         hCell.style.borderLeft = '2px solid black';
-
                 if (neighbors[2] != null)
                     if (neighbors[2].shapeNum != bCell.shapeNum)
                         hCell.style.borderRight = '2px solid black';
-
                 if (neighbors[3] != null)
                     if (neighbors[3].shapeNum != bCell.shapeNum)
                         hCell.style.borderBottom = '2px solid black';
-                    
+
+                hCell.dataset.row = i;
+                hCell.dataset.col = j;
+
                 boardContainer.append(hCell);
             }
         }
@@ -253,6 +254,16 @@ class Cell {
     }
 
     //todo clone constructor
+
+    //for clicking only
+    cycleState() {
+        if (!this.isInitialized) this.isInitialized = true;
+        else if (!this.isStar) this.isStar = true;
+        else {
+            this.isInitialized = false;
+            this.isStar = false;
+        }
+    }
     
     resetCell() {
         this.isInitialized = false;
@@ -418,18 +429,30 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function detectClick(event) {
+    const cell = event.target.closest('.cell');
+    if (!cell) return; // clicked outside a cell
+
+    b.grid[cell.dataset.row][cell.dataset.col].cycleState();
+    b.display();
+}
+
 function newBoard() {
     let r = Rand.unseededRand();
     b = new Board(slider.value, r);
     b.generate();
-    b.resetStars();
+    b.resetStars();        
     b.display();
+
+    const boardContainer = document.getElementById('boardContainer');
+    boardContainer.addEventListener('click', detectClick);
 }
 
 newBoard();
 
 //generate button
 document.getElementById('generate').onclick = () => {
+    boardContainer.removeEventListener('click', detectClick);
     newBoard();
 }
 

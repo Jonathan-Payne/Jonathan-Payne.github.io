@@ -11,3 +11,20 @@
     border: 3px solid black;
     width: fit-content;
 }
+
+#logo, #boardContainer, #sliderDiv, #generate {
+    margin: auto;
+}
+
+#logo {
+    width: 75vw;
+    display: block;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
+
+#sliderDiv {
+    width: fit-content;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
