@@ -143,7 +143,7 @@ class Board {
                     }
                 }
                 if (emptySpaces.length < (2 - star)) { //if overcrowded, retry
-                    this.#resetStars();
+                    this.resetStars();
                     this.#genStars();
                     return;
                 }
@@ -156,7 +156,7 @@ class Board {
         return true;
     }
 
-    #resetStars() {
+    resetStars() {
         for (let i = 0; i < this.len; i++) {
             for (let j = 0; j < this.len; j++) {
                 this.grid[i][j].resetCell();
@@ -199,24 +199,39 @@ class Board {
         //add cells as HTML elements
         for (let i = 0; i < this.len; i++) {
             for (let j = 0; j < this.len; j++) {
-                let cell = document.createElement('div');
-                cell.style.border = '1px solid gray';
+                let hCell = document.createElement('div');
+                let bCell = this.grid[i][j];
+                hCell.style.border = '1px solid gray';
                 
                 let stateDisplay = document.createElement('img');
-                if (this.grid[i][j].isStar) {    
+                if (bCell.isStar) {    
                     stateDisplay.src = "assets/star.svg"
                     stateDisplay.style.scale = 0.75;
-                } else if (this.grid[i][j].isInitialized) {
+                } else if (bCell.isInitialized) {
                     stateDisplay.src = "assets/cross.svg"
                     stateDisplay.style.scale = 0.35;
                 }
 
-                cell.append(stateDisplay);
-                
-                if (this.grid[i][j].shapeNum >= 0) cell.style.backgroundColor = `hsla(${this.grid[i][j].shapeNum * 360 / this.len}, 100%, 50%, 0.25)`;
-                else cell.style.backgroundColor = 'rgb(255, 0, 0)'
+                hCell.append(stateDisplay);
 
-                boardContainer.append(cell);
+                let neighbors = bCell.get4Neighbors();
+                if (neighbors[0] != null)
+                    if (neighbors[0].shapeNum != bCell.shapeNum)
+                        hCell.style.borderTop = '2px solid black';
+
+                if (neighbors[1] != null)
+                    if (neighbors[1].shapeNum != bCell.shapeNum)
+                        hCell.style.borderLeft = '2px solid black';
+
+                if (neighbors[2] != null)
+                    if (neighbors[2].shapeNum != bCell.shapeNum)
+                        hCell.style.borderRight = '2px solid black';
+
+                if (neighbors[3] != null)
+                    if (neighbors[3].shapeNum != bCell.shapeNum)
+                        hCell.style.borderBottom = '2px solid black';
+                    
+                boardContainer.append(hCell);
             }
         }
     }
@@ -390,24 +405,6 @@ class Shape {
     }
 }
 
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
-
-//generate button
-document.getElementById('generate').onclick = () => {
-    let r = Rand.unseededRand();
-    b = new Board(slider.value, r);
-    b.generate();
-    b.display();
-}
-
-
-
-
 //show slider val in text
 const slider = document.getElementById("slider")
 const sliderval = document.getElementById("sliderval");
@@ -415,3 +412,24 @@ sliderval.innerHTML = slider.value;
 slider.oninput = function() {
     sliderval.innerHTML = this.value;
 }
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function newBoard() {
+    let r = Rand.unseededRand();
+    b = new Board(slider.value, r);
+    b.generate();
+    b.resetStars();
+    b.display();
+}
+
+newBoard();
+
+//generate button
+document.getElementById('generate').onclick = () => {
+    newBoard();
+}
+
