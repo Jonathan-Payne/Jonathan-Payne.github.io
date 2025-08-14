@@ -179,10 +179,10 @@ class Board {
     }
 
     checkIsCorrect() {
-        if (this.grid[0][0].isStar) {
-            victoryAnim();
-            return;
-        }
+        // if (this.grid[0][0].isStar) {
+        //     victoryAnim();
+        //     return;
+        // }
 
         for (let i = 0; i < this.len; i++) {
             if (this.starsInRow(i) != 2) return;
@@ -481,7 +481,7 @@ function newBoard() {
     b.display();
 
     const boardContainer = document.getElementById('boardContainer');
-    boardContainer.addEventListener('click', detectClick);
+    boardContainer.addEventListener('pointerdown', detectClick);
 }
 
 
@@ -489,29 +489,21 @@ newBoard();
 
 //generate button
 document.getElementById('generate').onclick = () => {
-    boardContainer.removeEventListener('click', detectClick);
+    boardContainer.removeEventListener('pointerdown', detectClick);
+    const text = document.getElementById('victoryText');
+    text.style.opacity = '0';
+    text.style.zIndex = '-1';
     newBoard();
 }
 
+//todo new idea: instead of just text, have box with victory text and time to complete puzzle
 function victoryAnim() {
-    const grid = document.getElementById('boardContainer');
     const cells = document.getElementsByClassName('cell');
     for (const cell of cells) {
         cell.style.filter = 'brightness(50%)';
         cell.style.backgroundColor = '#ccc';
     }
-    grid.style.backgroundColor = '#ccc';
-
-    const container = document.getElementById('textContainer');
-
-    let vText = document.createElement('p');
-    vText.innerHTML = 'Victory!';
-    vText.style.zIndex = '1000';
-
-    container.append(vText);
+    const text = document.getElementById('victoryText');
+    text.style.opacity = '1';
+    text.style.zIndex = '10';
 }
-
-
-
-//todo make victory text appear
-// html sucks
