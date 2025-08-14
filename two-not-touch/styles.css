@@ -1,15 +1,39 @@
+@font-face {
+    font-family: 'Gontserrat-Regular';
+    src: url('assets/Gontserrat-Regular.ttf');
+}
+
+html {
+    font-family: 'Gontserrat-Regular', sans-serif;
+}
+
 .label {
     display: inline;
+    font-size: 1.3em;
 }
 
 #generate {
     display: block;
+    background-color: black;
+    scale: 1.5;
+    border: none;
+    padding: 1vw;
+    border-radius: 1em;
+    color: white;
+    cursor: pointer;
 }
 
 #boardContainer {
     display: grid;
     border: 3px solid black;
-    width: fit-content;
+    
+    @media screen and (max-width: 800px) {
+        width: 90vw !important;
+        height: 90vw !important;
+    }
+
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);;
 }
 
 #logo, #boardContainer, #sliderDiv, #generate {
@@ -17,14 +41,29 @@
 }
 
 #logo {
-    width: 75vw;
+    width: 50vw;
     display: block;
     margin-top: 3vw;
     margin-bottom: 3vw;
+
+    @media screen and (max-width: 800px) {
+        width: 75vw !important;
+    }
 }
 
 #sliderDiv {
     width: fit-content;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
+    margin-top: 2vw;
+    margin-bottom: 3vw;
+}
+
+
+.cell {
+    cursor: pointer;
+}
+
+
+#slider {
+    accent-color: rgb(255, 58, 58);
+    cursor: pointer;
 }

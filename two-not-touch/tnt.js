@@ -191,9 +191,10 @@ class Board {
         boardContainer.replaceChildren();
 
 
-        //set appropriate number of columns
-        boardContainer.style.gridTemplateColumns = `repeat(${this.len}, min(${50 / this.len}vw, ${50 / this.len}vh)`;
-        boardContainer.style.gridAutoRows = `min(${50 / this.len}vw, ${50 / this.len}vh)`;
+        //set appropriate number of columns, and column/row scaling
+        const percent = 100 / this.len;
+        boardContainer.style.gridTemplateColumns = `repeat(${this.len}, ${percent}%)`;
+        boardContainer.style.gridAutoRows = `${percent}%`;
         
         //add cells as HTML elements
         for (let i = 0; i < this.len; i++) {
@@ -202,16 +203,7 @@ class Board {
                 let bCell = this.grid[i][j];
                 hCell.className = 'cell';
                 
-                //star or cross inside cell
-                let stateDisplay = document.createElement('img');
-                if (bCell.isStar) {    
-                    stateDisplay.src = "assets/star.svg"
-                    stateDisplay.style.scale = 0.75;
-                } else if (bCell.isInitialized) {
-                    stateDisplay.src = "assets/cross.svg"
-                    stateDisplay.style.scale = 0.35;
-                }
-                hCell.append(stateDisplay);
+                hCell.append(bCell.renderImg());
 
                 //border styling
                 hCell.style.border = '1px solid gray';
@@ -263,6 +255,20 @@ class Cell {
             this.isInitialized = false;
             this.isStar = false;
         }
+    }
+
+    //star or cross inside cell
+    renderImg() {
+        let stateDisplay = document.createElement('img');
+        if (this.isStar) {    
+            stateDisplay.src = "assets/star.svg"
+            stateDisplay.style.scale = 0.75;
+        } else if (this.isInitialized) {
+            stateDisplay.src = "assets/cross.svg"
+            stateDisplay.style.scale = 0.35;
+        }
+        stateDisplay.className = 'stateDisplay';
+        return stateDisplay;
     }
     
     resetCell() {
@@ -433,8 +439,9 @@ function detectClick(event) {
     const cell = event.target.closest('.cell');
     if (!cell) return; // clicked outside a cell
 
+    cell.replaceChildren();
     b.grid[cell.dataset.row][cell.dataset.col].cycleState();
-    b.display();
+    cell.append(b.grid[cell.dataset.row][cell.dataset.col].renderImg());
 }
 
 function newBoard() {
