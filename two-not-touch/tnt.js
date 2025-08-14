@@ -48,11 +48,6 @@ class Board {
         this.#rand = rand;
     }
 
-    static copy(otherBoard) {
-        return ;
-        //TODO: clone object function
-    }
-
     generate() {
         this.#genStars();
         this.#genShapes();
@@ -183,7 +178,39 @@ class Board {
         return stars;
     }
 
-    
+    checkIsCorrect() {
+        if (this.grid[0][0].isStar) {
+            victoryAnim();
+            return;
+        }
+
+        for (let i = 0; i < this.len; i++) {
+            if (this.starsInRow(i) != 2) return;
+            if (this.starsInCol(i) != 2) return;
+        }
+
+
+        for (const shape of this.shapes) {
+            if (shape.numStars() != 2) return;
+        }
+
+        for (let i = 0; i < this.len; i+=2) {
+            for (let j = 0; j < this.len; j+=2) {
+                let cell = this.grid[i][j];
+                if (cell.isStar) {
+                    let neighbors = cell.get8Neighbors();
+                    for (const c of neighbors) {
+                        if (c != null)
+                            if (c.isStar) return;
+                    }
+                }
+            }
+        }
+
+        
+        victoryAnim();
+    }
+
 
     display() {
         const boardContainer = document.getElementById('boardContainer');
@@ -245,8 +272,6 @@ class Cell {
         board.grid[row][col] = this;
     }
 
-    //todo clone constructor
-
     //for clicking only
     cycleState() {
         if (!this.isInitialized) this.isInitialized = true;
@@ -260,14 +285,16 @@ class Cell {
     //star or cross inside cell
     renderImg() {
         let stateDisplay = document.createElement('img');
+        stateDisplay.className = 'stateDisplay';
         if (this.isStar) {    
             stateDisplay.src = "assets/star.svg"
             stateDisplay.style.scale = 0.75;
+            stateDisplay.classList.add('star');
         } else if (this.isInitialized) {
             stateDisplay.src = "assets/cross.svg"
             stateDisplay.style.scale = 0.35;
+            stateDisplay.classList.add('cross');
         }
-        stateDisplay.className = 'stateDisplay';
         return stateDisplay;
     }
     
@@ -440,8 +467,10 @@ function detectClick(event) {
     if (!cell) return; // clicked outside a cell
 
     cell.replaceChildren();
-    b.grid[cell.dataset.row][cell.dataset.col].cycleState();
-    cell.append(b.grid[cell.dataset.row][cell.dataset.col].renderImg());
+    let bCell = b.grid[cell.dataset.row][cell.dataset.col]
+    bCell.cycleState();
+    cell.append(bCell.renderImg());
+    if (bCell.isStar || !bCell.isInitialized) b.checkIsCorrect();
 }
 
 function newBoard() {
@@ -455,6 +484,7 @@ function newBoard() {
     boardContainer.addEventListener('click', detectClick);
 }
 
+
 newBoard();
 
 //generate button
@@ -463,3 +493,25 @@ document.getElementById('generate').onclick = () => {
     newBoard();
 }
 
+function victoryAnim() {
+    const grid = document.getElementById('boardContainer');
+    const cells = document.getElementsByClassName('cell');
+    for (const cell of cells) {
+        cell.style.filter = 'brightness(50%)';
+        cell.style.backgroundColor = '#ccc';
+    }
+    grid.style.backgroundColor = '#ccc';
+
+    const container = document.getElementById('textContainer');
+
+    let vText = document.createElement('p');
+    vText.innerHTML = 'Victory!';
+    vText.style.zIndex = '1000';
+
+    container.append(vText);
+}
+
+
+
+//todo make victory text appear
+// html sucks

@@ -17,7 +17,7 @@ html {
     background-color: black;
     scale: 1.5;
     border: none;
-    padding: 1vw;
+    padding: 1em;
     border-radius: 1em;
     color: white;
     cursor: pointer;
@@ -28,15 +28,15 @@ html {
     border: 3px solid black;
     
     @media screen and (max-width: 800px) {
-        width: 90vw !important;
-        height: 90vw !important;
+        width: min(90vw, 75vh) !important;
+        height: min(90vw, 75vh) !important;
     }
 
     width: min(50vw, 50vh);
-    height: min(50vw, 50vh);;
+    height: min(50vw, 50vh);
 }
 
-#logo, #boardContainer, #sliderDiv, #generate {
+#logo, #bigContainer, #sliderDiv, #generate {
     margin: auto;
 }
 
@@ -51,15 +51,31 @@ html {
     }
 }
 
+#bigContainer {
+    width: fit-content;
+    position: relative;
+}
+
+#textContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
 #sliderDiv {
     width: fit-content;
-    margin-top: 2vw;
-    margin-bottom: 3vw;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 
 .cell {
     cursor: pointer;
+    transition: 2s;
 }
 
 
