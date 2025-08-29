@@ -36,6 +36,7 @@ html {
     height: min(50vw, 50vh);
 
     touch-action: manipulation;
+    transition: 1s ease-in-out;
 }
 
 .stateDisplay {
@@ -68,18 +69,31 @@ html {
     position: relative;
 }
 
-#victoryText {
+#victory {
     position: absolute;
-    text-align: center;
-    width: 100%;
-    font-size: 5em;
-    top: calc(50% - 1ex);
-    margin: auto;
-    color: rgb(255, 255, 255);
+    top: 39%;
+    left: 29%;
+    width: 42%;
+    height: 22%;
+    background-color: rgb(255, 228, 75);
+    border-radius: 10px;
+    box-shadow: 0 0 10px white;
     opacity: 0;
-    transition: 1s ease-in-out;
-    text-shadow: 0 0 10px gold;
     z-index: -1;
+    transition: 0s;
+
+}
+
+#victoryText {
+    margin: 10px auto;
+    color: black;
+    text-align: center;
+    font-size: 2em;
+}
+
+#playAgain {
+    display: block;
+    margin: 10px auto;
 }
 
 #sliderDiv {
@@ -91,7 +105,6 @@ html {
 
 .cell {
     cursor: pointer;
-    transition: 1s ease-in-out;
 }
 
 

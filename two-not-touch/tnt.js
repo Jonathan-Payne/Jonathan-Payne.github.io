@@ -208,7 +208,7 @@ class Board {
         }
 
         
-        victoryAnim();
+        victory();
     }
 
 
@@ -480,6 +480,16 @@ function newBoard() {
     b.resetStars();        
     b.display();
 
+    const greyedOut = document.getElementById('boardContainer');
+    greyedOut.style.filter = 'brightness(100%)';
+    greyedOut.style.backgroundColor = '#fff';
+    greyedOut.style.transition = '0s';
+
+    const victoryDisp = document.getElementById('victory');
+    victoryDisp.style.opacity = '0';
+    victoryDisp.style.zIndex = '-1';
+    victoryDisp.style.transition = '0s';
+
     const boardContainer = document.getElementById('boardContainer');
     boardContainer.addEventListener('pointerdown', detectClick);
 }
@@ -490,20 +500,24 @@ newBoard();
 //generate button
 document.getElementById('generate').onclick = () => {
     boardContainer.removeEventListener('pointerdown', detectClick);
-    const text = document.getElementById('victoryText');
-    text.style.opacity = '0';
-    text.style.zIndex = '-1';
     newBoard();
 }
 
+document.getElementById('playAgain').onclick = document.getElementById('generate').onclick;
+
 //todo new idea: instead of just text, have box with victory text and time to complete puzzle
-function victoryAnim() {
-    const cells = document.getElementsByClassName('cell');
-    for (const cell of cells) {
-        cell.style.filter = 'brightness(50%)';
-        cell.style.backgroundColor = '#ccc';
-    }
-    const text = document.getElementById('victoryText');
-    text.style.opacity = '1';
-    text.style.zIndex = '10';
+function victory() {
+    const greyedOut = document.getElementById('boardContainer');
+    greyedOut.style.filter = 'brightness(50%)';
+    greyedOut.style.backgroundColor = '#ccc';
+    greyedOut.style.transition = '1s ease-in-out';
+
+    const victoryDisp = document.getElementById('victory');
+    victoryDisp.style.opacity = '1';
+    victoryDisp.style.zIndex = '10';
+    victoryDisp.style.transition = '1s ease-in-out';
+
+    //why does this work?
+    //shouldn't boardContainer be undefined?
+    boardContainer.removeEventListener('pointerdown', detectClick);
 }
