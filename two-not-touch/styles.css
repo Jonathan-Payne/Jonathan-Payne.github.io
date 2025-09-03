@@ -1,10 +1,10 @@
 @font-face {
-    font-family: 'Gontserrat-Regular';
-    src: url('assets/Gontserrat-Regular.ttf');
+    font-family: 'Nexa-Heavy';
+    src: url('assets/Nexa-Heavy.ttf');
 }
 
-html {
-    font-family: 'Gontserrat-Regular', sans-serif;
+html, #generate {
+    font-family: 'Nexa-Heavy', sans-serif;
 }
 
 .label {
@@ -77,7 +77,7 @@ html {
     height: 22%;
     background-color: rgb(255, 228, 75);
     border-radius: 10px;
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 10px rgb(255, 234, 116);
     opacity: 0;
     z-index: -1;
     transition: 0s;
@@ -85,15 +85,31 @@ html {
 }
 
 #victoryText {
-    margin: 10px auto;
-    color: black;
+    margin: 5% auto;
+    color: white;
     text-align: center;
+    height: 30%;
     font-size: 2em;
 }
 
 #playAgain {
-    display: block;
-    margin: 10px auto;
+    margin: 5% auto;
+    width: fit-content;
+    height: 40%;
+}
+
+#retryArrow {
+    height: 50%;
+    margin: auto 0;
+    vertical-align: middle;
+    
+}
+
+#retryText {
+    margin: auto 0;
+    font-size: 1.5em;
+    vertical-align: middle;
+    color: white;
 }
 
 #sliderDiv {

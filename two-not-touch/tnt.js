@@ -503,8 +503,6 @@ document.getElementById('generate').onclick = () => {
     newBoard();
 }
 
-document.getElementById('playAgain').onclick = document.getElementById('generate').onclick;
-
 //todo new idea: instead of just text, have box with victory text and time to complete puzzle
 function victory() {
     const greyedOut = document.getElementById('boardContainer');
