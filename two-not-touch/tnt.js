@@ -494,11 +494,17 @@ function newBoard() {
     boardContainer.addEventListener('pointerdown', detectClick);
 }
 
+const generateButton = document.getElementById('generate');
+const playAgain = document.getElementById('playAgain');
+playAgain.addEventListener('pointerdown', (event) => {
+    generateButton.onclick();
+});
+
 
 newBoard();
 
 //generate button
-document.getElementById('generate').onclick = () => {
+generateButton.onclick = () => {
     boardContainer.removeEventListener('pointerdown', detectClick);
     newBoard();
 }

@@ -96,13 +96,14 @@ html, #generate {
     margin: 5% auto;
     width: fit-content;
     height: 40%;
+    cursor: pointer;
 }
 
 #retryArrow {
     height: 50%;
     margin: auto 0;
     vertical-align: middle;
-    
+    filter: invert(100%);
 }
 
 #retryText {
