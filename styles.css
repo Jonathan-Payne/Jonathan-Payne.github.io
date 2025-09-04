@@ -12,8 +12,8 @@ html {
     display: block;
     margin: 5vh auto;
     border: 2px solid black;
-    width: 20vw;
-    height: 20vw;
+    width: 30vw;
+    height: 30vw;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 10px gray;
@@ -27,7 +27,7 @@ html {
     }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1600px) and (min-width: 800px) {
     .item {
         width: 50vmin !important;
         height: 50vmin !important;
