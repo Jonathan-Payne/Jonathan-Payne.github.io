@@ -509,7 +509,6 @@ generateButton.onclick = () => {
     newBoard();
 }
 
-//todo new idea: instead of just text, have box with victory text and time to complete puzzle
 function victory() {
     const greyedOut = document.getElementById('boardContainer');
     greyedOut.style.filter = 'brightness(50%)';
@@ -520,8 +519,7 @@ function victory() {
     victoryDisp.style.opacity = '1';
     victoryDisp.style.zIndex = '10';
     victoryDisp.style.transition = '1s ease-in-out';
-
-    //why does this work?
-    //shouldn't boardContainer be undefined?
+    
+    const boardContainer = document.getElementById('boardContainer');
     boardContainer.removeEventListener('pointerdown', detectClick);
 }

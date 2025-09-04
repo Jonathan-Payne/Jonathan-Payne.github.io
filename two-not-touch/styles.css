@@ -7,15 +7,12 @@ html, #generate {
     font-family: 'Nexa-Heavy', sans-serif;
 }
 
-.label {
-    display: inline;
-    font-size: 1.3em;
-}
-
 #generate {
     display: block;
     background-color: black;
+    max-width: 50vw;
     scale: 1.5;
+    font-size: min(1em, 5vw);
     border: none;
     padding: 1em;
     border-radius: 1em;
@@ -32,8 +29,8 @@ html, #generate {
         height: min(90vw, 75vh) !important;
     }
 
-    width: min(50vw, 50vh);
-    height: min(50vw, 50vh);
+    width: 50vmin;
+    height: 50vmin;
 
     touch-action: manipulation;
     transition: 1s ease-in-out;
@@ -69,8 +66,13 @@ html, #generate {
     position: relative;
 }
 
+
+
+
+
 #victory {
     position: absolute;
+    /* weird % values so it doesnt line up with grid lines */
     top: 39%;
     left: 29%;
     width: 42%;
@@ -81,15 +83,6 @@ html, #generate {
     opacity: 0;
     z-index: -1;
     transition: 0s;
-
-}
-
-#victoryText {
-    margin: 5% auto;
-    color: white;
-    text-align: center;
-    height: 30%;
-    font-size: 2em;
 }
 
 #playAgain {
@@ -97,6 +90,14 @@ html, #generate {
     width: fit-content;
     height: 40%;
     cursor: pointer;
+}
+
+#victoryText {
+    margin: 5% auto;
+    color: white;
+    text-align: center;
+    height: 30%;
+    font-size: min(2em, 5vw);
 }
 
 #retryArrow {
@@ -108,16 +109,13 @@ html, #generate {
 
 #retryText {
     margin: auto 0;
-    font-size: 1.5em;
+    font-size: min(1.5em, 4vw);
     vertical-align: middle;
     color: white;
 }
 
-#sliderDiv {
-    width: fit-content;
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
+
+
 
 
 .cell {
@@ -125,7 +123,26 @@ html, #generate {
 }
 
 
+
+
+
+
+#sliderDiv {
+    width: fit-content;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.label {
+    font-size: min(1.5em, 7vw);
+    vertical-align: middle;
+    display: inline;
+}
+
 #slider {
     accent-color: rgb(255, 58, 58);
     cursor: pointer;
+    vertical-align: middle;
+    max-width: 30vw;
+    width: 15em;
 }
