@@ -23,17 +23,19 @@ html, #generate {
 #boardContainer {
     display: grid;
     border: 3px solid black;
-    
-    @media screen and (max-width: 800px) {
-        width: min(90vw, 75vh) !important;
-        height: min(90vw, 75vh) !important;
-    }
 
     width: 50vmin;
     height: 50vmin;
 
     touch-action: manipulation;
     transition: 1s ease-in-out;
+}
+
+@media screen and (max-width: 800px) {
+    #boardContainer {
+        width: min(90vw, 75vh) !important;
+        height: min(90vw, 75vh) !important;
+    }
 }
 
 .stateDisplay {
